@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Acount details</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>
+			<th>ID</th>
+		</tr>
+		<tr th:each="accounts:${accounts}">
+			<td th:text="${accounts.name}"></td>
+			<th>
+			<td th:text="${accounts.clientId}"></td>
+		</tr>
+	</table>
+</body>
+</html>
