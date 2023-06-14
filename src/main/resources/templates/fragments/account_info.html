@@ -1,0 +1,31 @@
+<div th:fragment="accountform">
+	<h1>Account creating</h1>
+	<form th:action="@{/createAccount}" th:object="${template_account}" method="post">
+		<h3>Name</h3>
+		<input type="text" th:field="*{name}" /><br> <input
+			type="submit" value="Save" /><br> <input type="reset"
+			value="Reset" />
+	</form>
+</div>
+<div th:fragment="accountfilter">
+	<form th:action="@{account}" th:object="${emptyaccount}" method="get">
+		<h3>Found by name</h3>
+		<input type="text" th:field="*{name}" /><br> <input
+			type="submit" value="Filter list" />
+	</form>
+</div>
+<div th:fragment="accountlist">
+	<h1>Account list</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>
+			<th>ID</th>
+		</tr>
+		<tr th:each="account:${accounts}">
+			<td th:text="${account.name}"></td>
+			<th>
+			<td th:text="${account.clientId}"></td>
+		</tr>
+	</table>
+</div>

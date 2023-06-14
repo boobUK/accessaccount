@@ -3,12 +3,9 @@ package com.boobuk.accountaccess.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -22,14 +19,11 @@ import jakarta.persistence.OneToMany;
 public class Account {
 
 	@Id
-	@Nonnull
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	@GeneratedValue
+	private Long id;
 	private String clientId;
-	@Nonnull
 	private String name;
 	private String permissions;
-	@Nonnull
 	@Column(name = "X-Token")
 	private String xToken;
 	@JsonProperty("accounts")
@@ -38,12 +32,12 @@ public class Account {
 	private List<Card> cards;
 
 	public Account() {
+		this.cards = new ArrayList<>();
 	}
 
 	public Account(String name) {
 		super();
 		this.name = name;
-		this.cards = new ArrayList<>();
 	}
 
 	public Account(Account account, String xToken) {
@@ -52,7 +46,6 @@ public class Account {
 		this.permissions = account.getPermissions();
 		this.cards = account.getCards();
 		this.xToken = xToken;
-
 	}
 
 	public String getClientId() {

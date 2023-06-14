@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Try create</h1>
+	<div th:insert="~{fragments/account_info :: accountform}"></div>
+	<br>
+	<h1>Try filter</h1>
+	<div th:insert="~{fragments/account_info :: accountfilter}"></div>
+	<h1>Check data</h1>
+	<div th:insert="~{fragments/account_info :: accountlist}"></div>
+</body>
+</html>

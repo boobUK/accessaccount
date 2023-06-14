@@ -1,27 +1,26 @@
 package com.boobuk.accountaccess.models;
 
-import java.util.List;
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.annotation.Nonnull;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Card {
 	@Id
-	@Nonnull
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String id;
 	private String sendId;
 	private double currencyCode;
 	private String cashbackType;
 	private double balance;
 	private double creditLimit;
-	@ElementCollection
-	private List<String> maskedPan;
+	private String[] maskedPan;
 	private String type;
 	private String iban;
 
@@ -76,11 +75,11 @@ public class Card {
 		this.creditLimit = creditLimit;
 	}
 
-	public List<String> getMaskedPan() {
+	public String[] getMaskedPan() {
 		return maskedPan;
 	}
 
-	public void setMaskedPan(List<String> maskedPan) {
+	public void setMaskedPan(String[] maskedPan) {
 		this.maskedPan = maskedPan;
 	}
 
